@@ -1,3 +1,39 @@
+const sliderContainer = document.querySelector('.slider-container');
+const slider = document.querySelector('.slider');
+
+let isDragging = false;
+let startPosX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+
+slider.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startPosX = e.clientX;
+  prevTranslate = currentTranslate;
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const distanceX = e.clientX - startPosX;
+    currentTranslate = prevTranslate + distanceX;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+  }
+});
+
+slider.addEventListener('mouseup', () => {
+  isDragging = false;
+  const distance = currentTranslate - prevTranslate;
+  if (distance < -100 && currentTranslate > -sliderContainer.clientWidth * 2) {
+    currentTranslate -= sliderContainer.clientWidth;
+  }
+  slider.style.transform = `translateX(${currentTranslate}px)`;
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDragging = false;
+  slider.style.transform = `translateX(${currentTranslate}px)`;
+});
+
 // const sliderContainer = document.querySelector('.slider-container');
 // const slider = document.querySelector('.slider');
 // const slides = document.querySelectorAll('.slide');
@@ -57,39 +93,3 @@
 //   updateSliderPosition();
 //   updateControlActiveWidth();
 // }, 3000);
-
-const sliderContainer = document.querySelector('.slider-container');
-const slider = document.querySelector('.slider');
-
-let isDragging = false;
-let startPosX = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-
-slider.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startPosX = e.clientX;
-  prevTranslate = currentTranslate;
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if (isDragging) {
-    const distanceX = e.clientX - startPosX;
-    currentTranslate = prevTranslate + distanceX;
-    slider.style.transform = `translateX(${currentTranslate}px)`;
-  }
-});
-
-slider.addEventListener('mouseup', () => {
-  isDragging = false;
-  const distance = currentTranslate - prevTranslate;
-  if (distance < -100 && currentTranslate > -sliderContainer.clientWidth * 2) {
-    currentTranslate -= sliderContainer.clientWidth;
-  }
-  slider.style.transform = `translateX(${currentTranslate}px)`;
-});
-
-slider.addEventListener('mouseleave', () => {
-  isDragging = false;
-  slider.style.transform = `translateX(${currentTranslate}px)`;
-});
