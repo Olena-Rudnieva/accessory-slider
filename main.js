@@ -35,11 +35,10 @@ function checkScreenWidth() {
 
     sliderContainer.addEventListener('mouseup', () => {
       isDragging = false;
-      // currentIndex = (currentIndex + 1) % slideCount;
-      // currentTranslate = -currentIndex * slideWidth;
-      // updateSliderPosition();
-      // updateControlActiveWidth();
-      console.log('stop');
+      currentIndex = (currentIndex + 1) % slideCount;
+      currentTranslate = -currentIndex * slideWidth;
+      updateSliderPosition();
+      updateControlActiveWidth();
     });
   }
 }
