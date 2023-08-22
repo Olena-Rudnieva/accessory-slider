@@ -78,7 +78,6 @@ slider.addEventListener('mousedown', (e) => {
   isDragging = true;
   startPosX = e.clientX;
   prevTranslate = currentTranslate;
-  console.log(prevTranslate);
 });
 
 slider.addEventListener('mousemove', (e) => {
@@ -86,20 +85,10 @@ slider.addEventListener('mousemove', (e) => {
     const distanceX = e.clientX - startPosX;
     console.log(distanceX);
     currentTranslate = prevTranslate + distanceX;
-    console.log(currentTranslate);
     slider.style.transform = `translateX(${currentTranslate}px)`;
   }
 });
 
 slider.addEventListener('mouseup', () => {
   isDragging = false;
-  const distance = currentTranslate - prevTranslate;
-  console.log(distance);
-  console.log(currentTranslate);
-  console.log(prevTranslate);
-  if (distance < -100 && currentTranslate > -sliderContainer.clientWidth * 2) {
-    currentTranslate -= sliderContainer.clientWidth;
-    console.log(sliderContainer.clientWidth);
-  }
-  slider.style.transform = `translateX(${currentTranslate}px)`;
 });
