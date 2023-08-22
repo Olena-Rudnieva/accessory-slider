@@ -32,13 +32,21 @@ sliderContainer.addEventListener('mousemove', (e) => {
   updateSliderPosition();
 });
 
-// sliderContainer.addEventListener('mouseleave', () => {
-//   isDragging = false;
-//   currentIndex = (currentIndex + 1) % slideCount;
-//   currentTranslate = -currentIndex * slideWidth;
-//   updateSliderPosition();
-//   updateControlActiveWidth();
-// });
+sliderContainer.addEventListener('mouseup', () => {
+  isDragging = false;
+  currentIndex = (currentIndex + 1) % slideCount;
+  currentTranslate = -currentIndex * slideWidth;
+  updateSliderPosition();
+  updateControlActiveWidth();
+});
+
+sliderContainer.addEventListener('mouseleave', () => {
+  isDragging = false;
+  currentIndex = (currentIndex + 1) % slideCount;
+  currentTranslate = -currentIndex * slideWidth;
+  updateSliderPosition();
+  updateControlActiveWidth();
+});
 
 // sliderContainer.addEventListener('mouseup', () => {
 //   isDragging = false;
@@ -53,14 +61,6 @@ sliderContainer.addEventListener('mousemove', (e) => {
 //   updateSliderPosition();
 //   updateControlActiveWidth();
 // });
-
-sliderContainer.addEventListener('mouseup', () => {
-  isDragging = false;
-  currentIndex = (currentIndex + 1) % slideCount;
-  currentTranslate = -currentIndex * slideWidth;
-  updateSliderPosition();
-  updateControlActiveWidth();
-});
 
 // setInterval(() => {
 //   currentIndex = (currentIndex + 1) % slideCount;
