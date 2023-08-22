@@ -31,10 +31,7 @@ function checkScreenWidth() {
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const moveX = e.clientX - startPositionX;
-      console.log(moveX);
       currentTranslate = -currentIndex * slideWidth + moveX;
-      console.log(currentTranslate);
-      console.log(startPositionX);
       updateSliderPosition();
     });
 
