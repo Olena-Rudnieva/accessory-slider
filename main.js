@@ -8,6 +8,7 @@ const slideCount = slides.length;
 let isDragging = false;
 let startPositionX = 0;
 let currentTranslate = 0;
+let test = 0;
 const slideWidth = slides[0].offsetWidth;
 
 function updateSliderPosition() {
@@ -24,21 +25,23 @@ function checkScreenWidth() {
     sliderContainer.addEventListener('mousedown', (e) => {
       isDragging = true;
       startPositionX = e.clientX;
+      slider.style.cursor = 'grabbing';
     });
 
-    sliderContainer.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const moveX = e.clientX - startPositionX;
       currentTranslate = -currentIndex * slideWidth + moveX;
       updateSliderPosition();
     });
 
-    sliderContainer.addEventListener('mouseup', () => {
+    window.addEventListener('mouseup', () => {
       isDragging = false;
       currentIndex = (currentIndex + 1) % slideCount;
       currentTranslate = -currentIndex * slideWidth;
       updateSliderPosition();
       updateControlActiveWidth();
+      slider.style.cursor = 'grab';
     });
   }
 }

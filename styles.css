@@ -20,10 +20,6 @@ img {
   display: block;
 }
 
-button {
-  cursor: pointer;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -67,7 +63,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
-  pointer-events: none;
 }
 
 .card-title {
